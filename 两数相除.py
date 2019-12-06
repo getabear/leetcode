@@ -19,7 +19,8 @@ class Solution:
         while count>0:
             divisor>>=1
             count-=1
-            if dividend>=divisor:
+            if dividend>=divisor:  #如果被除数大于除数,被除数减去除数,结果加上倍数.
+                                    # 否则就不加,继续减小除数
                 result+=1<<count
                 dividend-=divisor
         if sign==0:
