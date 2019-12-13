@@ -37,7 +37,7 @@ class Solution:
 
 class Solution1:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
-        #这次咱们用自底向上的动态规划
+        #这次咱们用自底向上的动态规划,提交leetcode比上一种解法快了4ms
         m=len(obstacleGrid)
         if m==0:
             return 0
