@@ -1,5 +1,8 @@
 from typing import List
 
+
+
+#没有尝试约束编程,以后想做了再来尝试约束编程
 class Solution:
     def totalNQueens(self, n: int) -> List[List[str]]:
 
