@@ -92,6 +92,8 @@ class Solution2(object):
         return self.result_all
 
 
+
+
 a=Solution2()
 print(a.readBinaryWatch(1))
 
