@@ -10,3 +10,8 @@ def creat(nums):   #构造一个链表的函数
         ret.next=ListNode(i)
         ret=ret.next
     return res.next
+
+def display(head):   #展示一个链表的值
+    while head:
+        print(head.val)
+        head=head.next
