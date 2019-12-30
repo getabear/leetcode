@@ -28,7 +28,6 @@ class TreeNode:
         self.right = None
 
 
-# nums=[3,9,20,None,None,15,7,8,9]
-# node=creat_er(nums)
-# print(node)
+
+
 
