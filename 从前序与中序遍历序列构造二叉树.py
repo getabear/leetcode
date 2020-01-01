@@ -5,7 +5,8 @@ class TreeNode:
         self.val = x
         self.left = None
         self.right = None
-
+#前序遍历   先根节点  左子树  右子树
+#中序遍历   先左子树  根节点  右子树
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
         def fun(preorder: List[int], inorder: List[int]):
