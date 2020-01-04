@@ -12,9 +12,9 @@ class Solution:
                 self.ret+=sum+root.val
                 return
             sum=(root.val+sum)*10
-            if root.left:
+            if root.left:   #如果存在左节点,继续深入
                 fun(root.left,sum)
-            if root.right:
+            if root.right:  #如果存在右节点,继续深入
                 fun(root.right,sum)
         if root:
             fun(root,0)
