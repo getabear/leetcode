@@ -1,6 +1,7 @@
 from typing import List
 
 class Solution:
+    #击败75%
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         index1=0
         size=len(numbers)
