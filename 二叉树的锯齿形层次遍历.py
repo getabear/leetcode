@@ -27,6 +27,6 @@ class Solution:
         length=len(ret)
         for i in range(length):
             if i&0x1:      #先从左到右,后从右到左
-                ret[i]=ret[i][::-1]
+                ret[i]=ret[i][::-1]   #翻转数组
         return ret
 # 思路二:双端队列,以后做(可能永远不会做哈哈哈哈)
