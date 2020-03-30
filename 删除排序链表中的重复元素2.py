@@ -2,6 +2,8 @@ class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+# 给定一个排序链表，删除所有含有重复数字的节点，只保留原始链表中 没有重复出现 的数字。
+
 
 #这里写复杂了,我妄图直接找到第一个不重复的节点,赋值给tp(即前项指针),这里
 #更简单的方法是新建一个虚拟节点例如 tp=ListNode(-1) ret=tp 返回时返回ret.next
