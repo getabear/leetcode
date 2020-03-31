@@ -32,6 +32,30 @@ class Solution1:
 class Solution:
     #试试堆排序
     def sortArray(self, nums: List[int]) -> List[int]:
+        #build  用于构造大顶堆
+        def build(arr,parent,length):
+            #参数 数组 父节点 数组长度
+            i=2*parent   #子节点下标
+            while(i<length):
+                if(i+1<length and arr[i]<arr[i+1]):
+                    i+=1  #选择两个子节点中较大的一个和父节点比较
+                if(arr[parent]>arr[i]): #如果父节点小于子节点,则交换他们的值
+                    break
+                arr[parent],arr[i]=arr[i],arr[parent]
+                parent=i
+                i=2*parent
+
+        def paixu(arr):
+            length=len(arr)
+            for i in range(length//2,0,-1):  #构造大顶堆
+                build(arr,i,length)
+
+            for i in range(length-1,0,-1):
+                arr[i],arr[1]=arr[1],arr[i]
+                build(arr,1,i)
+            return arr[1:]
+
+        return paixu([-1]+nums)
 
 
 
