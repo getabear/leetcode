@@ -81,7 +81,7 @@ class Solution2:
 
         return ret
 
-#官方   击败97%
+#官方   击败97% 真厉害
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         WORD_KEY = '$'
