@@ -128,7 +128,7 @@ class Solution:
             board[row][col] = letter
 
             # Optimization: incrementally remove the matched leaf node in Trie.
-            if not currNode:   #剪枝,所以速度更加的快
+            if not currNode:   # 剪枝,所以速度更加的快
                 parent.pop(letter)
 
         for row in range(rowNum):
