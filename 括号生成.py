@@ -1,5 +1,5 @@
 from typing import List
-class Solution(object):
+class Solution1(object):
     def generateParenthesis(self, n):
         def generate(A = []):
             if len(A) == 2*n:
@@ -48,8 +48,28 @@ class Solution(object):
         generate("",2*n)
         return ret
 
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        #本次咱们使用动态规划
+        dp=[None for i in range(n+1)]
+        dp[0]=[""]
+
+        for i in range(1,n+1):
+            tmp = []
+            for j in range(i):
+                left=dp[j]
+                right=dp[i-j-1]
+                for l in left:
+                    for r in right:
+                        tmp.append("("+l+")"+r)
+                dp[i]=tmp
+
+        return dp[n]
+
+
+
 a=Solution()
-ret1=a.generateParenthesis(4)
-ret2=a.generateParenthesis2(4)
-print(ret1==ret2)
-print(ret2)
+ret=a.generateParenthesis(4)
+print(ret)
+
+
