@@ -16,3 +16,14 @@ class Solution:
                 return i
             i=i.next
         return None
+
+
+class Solution1(object):
+    # 这个算法也浪漫了吧，错的人迟早会走散，而对的人迟早会相逢！
+    def getIntersectionNode(self, headA, headB):
+        ha, hb = headA, headB
+        while ha != hb:
+            ha = ha.next if ha else headB
+            hb = hb.next if hb else headA
+        return ha
+
