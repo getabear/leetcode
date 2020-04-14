@@ -17,12 +17,13 @@ class Solution1:
         fun(nums,0)
         return self.res
 
-class Solution:
+class Solution2:
+    #加入记忆数组,成功通过所有的测试用例
     def rob(self, nums: List[int]) -> int:
         self.res = 0
         length=len(nums)
         mem={}
-        #加入记忆的数组,成功通过所有测试用例
+
         def fun(index, sum):
             if index in mem:
                 if mem[index]+sum>self.res:
@@ -45,7 +46,23 @@ class Solution:
         return self.res
 
 
+class Solution:
+    #这次利用动态规划解决问题
+    def rob(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        if len(nums)<2:
+            return nums[-1]
+        dp=[0 for i in nums]
+        dp[-1]=nums[-1]
+        dp[-2]=max(nums[-1],nums[-2])
+
+        for i in range(len(nums)-3,-1,-1):
+            dp[i]=max(dp[i+1],dp[i+2]+nums[i])
+
+        return dp[0]
+
 
 a=Solution()
-nums= [1,2,3,1]
+nums=[2,7,9,3,1]
 print(a.rob(nums))
