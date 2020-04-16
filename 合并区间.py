@@ -1,7 +1,7 @@
 from typing import List
 #有点不想做了,看看官方题解
 #一次线性扫描,时间主要花费在排序上,所以时间复杂度为O(nlogn)
-class Solution:
+class Solution1:
     def merge(self, intervals):
         intervals.sort(key=lambda x: x[0])
 
@@ -18,6 +18,16 @@ class Solution:
 
         return merged
 
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort(key=lambda x:x[0])
+        ret=[]
+        for interval in intervals:
+            if not ret or interval[0]>ret[-1][1]:
+                ret.append(interval)
+            else:
+                ret[-1][1]=max(interval[1],ret[-1][1])
+        return ret
 
 a=Solution()
 interval=[[1,3],[2,6],[8,10],[15,18]]
