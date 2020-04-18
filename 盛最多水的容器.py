@@ -1,7 +1,7 @@
 from typing import List
 
 
-class Solution:
+class Solution1:
     def maxArea(self, height: List[int]) -> int:
         def fun(height):  # 首先,暴力法,leetcode 提交超时,得优化
             ret = 0
@@ -34,7 +34,24 @@ class Solution:
 
         return fun2(height)
 
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        length=len(height)
+        ret=0
+        right=length-1
+        left=0
+        while(left<right):
+            if height[left]<height[right]:
+                tmp=height[left]*(right-left)
+                left+=1
+            else:
+                tmp=height[right]*(right-left)
+                right-=1
+            if tmp>ret:
+                ret=tmp
+        return ret
+
 
 a = Solution()
-height =[1,10,100,2,5,1,10,3,7]
+height =[1,8,6,2,5,4,8,3,7]
 print(a.maxArea(height))
