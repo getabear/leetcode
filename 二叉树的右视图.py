@@ -11,7 +11,7 @@ class TreeNode:
 # collections 模块，支持从头和尾部的常数时间append/pop 操作。若使用 Python 的 list，
 # 通过 list.pop(0) 去除头部会消耗 O(n) 的时间。
 #以后可以使用deque
-class Solution:
+class Solution1:
     def rightSideView(self, root: TreeNode) -> List[int]:
         queue=[]
         ret=[]
@@ -34,3 +34,23 @@ class Solution:
         for i in ret:
             res.append(i[-1])
         return res
+
+class Solution:
+    def rightSideView(self, root: TreeNode) -> List[int]:
+
+        res=[]
+        def fun(Node,level):
+            if not Node:
+                return
+            try:
+                res[level].append(Node.val)
+            except:
+                res.append([])
+                res[level].append(Node.val)
+            fun(Node.left, level + 1)
+            fun(Node.right,level+1)
+        fun(root,0)
+        ret=[]
+        for i in res:
+            ret.append(i[-1])
+        return ret
