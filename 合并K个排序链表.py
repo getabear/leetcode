@@ -4,7 +4,7 @@ class ListNode:
         self.val = x
         self.next = None
 
-class Solution:
+class Solution1:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         def merge(list1,list2):   #功能,和并两个排序链表
             ret=ListNode(None)
@@ -48,6 +48,57 @@ class Solution:
                 return merge(temp,divide(lists[2:]))
         return divide(lists)    #暂时是对的,只是超时了
 
+
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+
+        def merge(Node1,Node2):
+            Node=ListNode(-1)
+            res=Node
+            while Node1 and Node2:
+                if Node1.val<=Node2.val:
+                    Node.next=ListNode(Node1.val)
+                    Node1=Node1.next
+                else:
+                    Node.next = ListNode(Node2.val)
+                    Node2 = Node2.next
+                Node=Node.next
+            while Node1:
+                Node.next=ListNode(Node1.val)
+                Node1=Node1.next
+                Node = Node.next
+            while Node2:
+                Node.next=ListNode(Node2.val)
+                Node2=Node2.next
+                Node = Node.next
+            return res.next
+
+        def divide(lists):
+            length=len(lists)
+            if length==1:
+                return lists[0]
+            # if length==2:
+            #     return merge(lists[0],lists[1])
+            left=divide(lists[:length//2])
+            right=divide(lists[length//2:])
+            return merge(left,right)
+
+        if len(lists) == 0:
+            return []
+        return divide(lists)
+
+def creat(nums):   #构造一个链表的函数
+    ret=ListNode(-1)
+    res=ret
+    for i in nums:
+        ret.next=ListNode(i)
+        ret=ret.next
+    return res.next
+node1=creat([1,4,5])
+node2=creat([1,3,4])
+lists=[node1,node2]
+a=Solution()
+print(a.mergeKLists(lists))
 
 
 
