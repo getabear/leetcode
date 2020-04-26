@@ -1,6 +1,6 @@
 from typing import List
 
-class Solution:
+class Solution1:
     def permute(self, nums: List[int]) -> List[List[int]]:
         ret=[]
         def fun(nums,temp):
@@ -15,6 +15,21 @@ class Solution:
                     temp.remove(i)
         fun(nums,[])
         return ret
+
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+
+        res=[]
+        def fun(nums,result):
+            if len(nums)==0:
+                res.append(result)
+                return
+            for i in nums:
+                tmp=nums[:]
+                tmp.remove(i)
+                fun(tmp,result+[i])
+        fun(nums,[])
+        return res
 
 a=Solution()
 nums=[1,2,3]
