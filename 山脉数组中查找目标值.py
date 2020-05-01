@@ -12,7 +12,7 @@ class Solution:
     def findInMountainArray(self, target: int, mountain_arr: 'MountainArray') -> int:
         #二分查找的函数
         def fun(mountain,l,r,target,direct):
-            while(l<r):
+            while(l<=r):
                 mid=(l+r)//2
                 tmp=mountain.get(mid)
                 if tmp==target:
@@ -27,8 +27,6 @@ class Solution:
                         r=mid-1
                     else:
                         l=mid+1
-            if mountain.get(l)==target:
-                return l
             return -1
 
         length=mountain_arr.length()
