@@ -33,7 +33,7 @@ class Solution1:
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        #有3种情况：
+        #有3种情况(这种递归是重下往上走的，可以好好思考下)：
         #1.如果左边不含有p或者q，则最大公共祖先一定在右边
         #2.如果右边不含有p或者q，则最大公共祖先一定在左边
         #3.左右都有，则最大公共祖先是本节点
