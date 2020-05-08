@@ -1,7 +1,7 @@
 from typing import List
 from collections import deque
 
-class Solution:
+class Solution1:
     def maximalSquare(self, matrix: List[List[str]]) -> int:
         #通过了提交，击败5.05%。使用双端队列，击败15%
         def judge(high,width,n):
@@ -25,6 +25,22 @@ class Solution:
             if judge(high,width,self.n+1):
                 queue.append((high,width,self.n+1))
         return self.n*self.n
+
+class Solution:
+    def maximalSquare(self, matrix: List[List[str]]) -> int:
+        high=len(matrix)
+        if not high:
+            return 0
+        width=len(matrix[0])
+        # dp含义 dp(i,j)表示已i,j为结尾下标的正方形最大面积
+        dp=[[0]*(width+1) for _ in range(high+1)]
+        ret=0
+        for i in range(high):
+            for j in range(width):
+                if matrix[i][j]=='1':
+                    dp[i+1][j+1]=min(dp[i][j],dp[i+1][j],dp[i][j+1])+1
+                    ret=max(ret,dp[i+1][j+1])
+        return ret*ret
 
 matrix=[["1","0","1","0","0"],
         ["1","0","1","1","1"],
