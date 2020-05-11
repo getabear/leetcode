@@ -1,4 +1,4 @@
-class Solution:
+class Solution1:
     def myPow(self, x: float, n: int) -> float:
         #递归解决方案
 
@@ -28,5 +28,21 @@ class Solution:
         res=fun(x,n)
         return res if flag else 1/res
 
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if n<0:
+            flag=-1
+            n=-n
+        else:
+            flag=1
+        def fun(x,n):
+            if n==0:
+                return 1
+            if n==1:
+                return x
+            tmp=fun(x,n//2)
+            return tmp*tmp if not n&0x1 else tmp*tmp*x
+        return fun(x,n) if flag==1 else 1/fun(x,n)
+
 a=Solution()
-print(a.myPow(2,-1))
+print(a.myPow(2,-2147483648))
