@@ -8,7 +8,7 @@ class Solution:
         # 是否在单元测试中出错。实现一个函数来查找第一个错误的版本。你应该尽量减少对
         # 调用 API 的次数。
         def isBadVersion(n):   #这是我们的假接口
-            mem={1:True,2:True,3:True,4:False,5:False}
+            mem={1:False,2:False,3:False,4:True,5:True}
             return mem[n]
         l,r=1,n
         while l<=r:
