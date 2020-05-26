@@ -1,5 +1,5 @@
 from typing import List
-class Solution:
+class Solution1:
     def countBits(self, num: int) -> List[int]:   #方法一,暴力法
         dp=[]
         dp.append(0)
@@ -25,6 +25,18 @@ class Solution:
                 dp.append(dp[i>>1])     #如果是偶数,则和它的右移一位的一样多
         return dp
 
+class Solution:
+    def countBits(self, num: int) -> List[int]:
+        if num<1:
+            return [0]
+        dp=[0]*(num+1)
+        dp[1]=1
+        for i in range(2,num+1):
+            if i&0x1:
+                dp[i]=dp[i-1]+1
+            else:
+                dp[i]=dp[i>>1]
+        return dp
 a=Solution()
-print(a.countBits2(2))
-print(a.countBits2(5))
+print(a.countBits(2))
+print(a.countBits(5))
