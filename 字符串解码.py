@@ -1,4 +1,4 @@
-class Solution:
+class Solution1:
     def decodeString(self, s: str) -> str:
         ret_s=""
         shu=[chr(i) for i in range(48,58)]
@@ -52,8 +52,27 @@ class Solution:
                 res+=i
         return res
 
+class Solution:
+    def decodeString(self, s: str) -> str:
+        mul=0
+        stack=[]
+        s1=""
+        for i in s:
+            if i>='0' and i<='9':
+                mul=mul*10+int(i)
+            elif i=='[':
+                stack.append((mul,s1))
+                mul=0
+                s1=""
+            elif i==']':
+                last_mul,last_s1=stack.pop()
+                s1=last_s1+s1*last_mul
+            else:
+                s1+=i
+        return s1
+
 
 
 a=Solution()
-s="2[leetcode3[a]]"
-print(a.decodeString2(s))
+s="3[a2[c]]"
+print(a.decodeString(s))
