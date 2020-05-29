@@ -1,6 +1,6 @@
 from typing import List
 
-class Solution1:
+class Solution:
     def distributeCandies(self, candies: int, num_people: int) -> List[int]:
         ret=[0]*num_people
         candie=1
@@ -14,9 +14,6 @@ class Solution1:
             index=(index+1)%num_people
             candie+=1
         return ret
-class Solution:
-    def distributeCandies(self, candies: int, num_people: int) -> List[int]:
-
 
 
 a=Solution()
