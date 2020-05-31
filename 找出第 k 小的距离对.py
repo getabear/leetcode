@@ -30,7 +30,7 @@ class Solution1(object):
         lo = 0
         hi = nums[-1] - nums[0]
         while lo < hi:
-            mi = (lo + hi) / 2
+            mi = (lo + hi) // 2
             if possible(mi):
                 hi = mi
             else:
