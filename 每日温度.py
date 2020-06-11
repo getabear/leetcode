@@ -19,7 +19,7 @@ class Solution1:
             i+=1
         return ret
 
-class Solution:
+class Solution2:
     def dailyTemperatures(self, T: List[int]) -> List[int]:
         #利用栈进行数据的记录
         length=len(T)-1
@@ -41,6 +41,26 @@ class Solution:
                     stack.append(length)
             length-=1
         return ret
+
+class Solution:
+    def dailyTemperatures(self, T: List[int]) -> List[int]:
+        stack=[]
+        index=len(T)
+        ret=[0]*index
+        index-=1
+        for i in range(index,-1,-1):
+            while stack:
+                if T[i]>=T[stack[-1]]:
+                    stack.pop()
+                else:
+                    break
+            if stack:
+                ret[i]=stack[-1]-i
+            stack.append(i)
+        return ret
+
+
+
 T=[73, 74, 75, 71, 69, 72, 76, 73]
 a=Solution()
 print(a.dailyTemperatures(T))
