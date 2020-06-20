@@ -1,4 +1,4 @@
-class Solution:
+class Solution1:
     def isMatch(self, s: str, p: str) -> bool:  #我写的,巨复杂
         lens=len(s)                           #陷入无尽的细节之中,推荐使用大佬解法
         lenp=len(p)
@@ -52,7 +52,30 @@ class Solution:
             return ans
         return fun(0,0)
 
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        lens=len(s)
+        lenp=len(p)
+        mem=dict()
+        def fun(i,j):
+            if (i,j) in mem:
+                return mem[(i,j)]
+            if j==lenp:
+                return i==lens
+            first=False
+            if i<lens and (p[j]=='.' or p[j]==s[i]):
+                first=True
+            if j+1<lenp and p[j+1]=='*':
+                mem[(i,j)]=first and fun(i+1,j) or fun(i,j+2)
+                return mem[(i,j)]
+            mem[(i,j)]=first and fun(i+1,j+1)
+            return mem[(i,j)]
+
+        return fun(0,0)
+
+
+
 a=Solution()
-s="ab"
-p=".*c"
-print(a.isMatch3(s,p))
+s = "ab"
+p = ".*"
+print(a.isMatch(s,p))
