@@ -1,6 +1,6 @@
 from typing import List
 
-class Solution:
+class Solution1:
     def firstMissingPositive(self, nums: List[int]) -> int:
         if not nums:
             return 1
@@ -61,11 +61,11 @@ class Solution:
             if nums[i]>size or nums[i]<=0:   #将超过size的数和负数替换为1
                 nums[i]=1
         for i in range(size):
-            i=abs(nums[i])   #保证取得正数
-            if i==size:
+            tmp=abs(nums[i])   #保证取得正数
+            if tmp==size:
                 nums[0]=-abs(nums[0])
             else:
-                nums[i]=-abs(nums[i])    #将数字作为索引,把对应位置的数变为负数
+                nums[tmp]=-abs(nums[tmp])    #将数字作为索引,把对应位置的数变为负数
         for i in range(1,size):
             if nums[i]>0:
                 return i
@@ -73,9 +73,23 @@ class Solution:
             return size
         return size+1
 
-        return size+1
-
+class Solution:
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        #桶排序
+        def swap(nums,index1,index2):
+            nums[index1],nums[index2]=nums[index2],nums[index1]
+            return
+        for i in range(len(nums)):
+            #为了防止nums[i]-1的值大于等于0，所以nums[i]必须大于0
+            #使用while循环的目的在于将nums[i]换到正确的位置之后，还需要将
+            # 换过来的数字放到正确的位置
+            while 0<nums[i]<len(nums) and nums[i]!=nums[nums[i]-1]:
+                swap(nums,i,nums[i]-1)#将数字nums[i]换到nums[i]-1的位置
+        for i in range(len(nums)):
+            if i+1!=nums[i]:
+                return i+1
+        return len(nums)+1
 
 a=Solution()
-nums=[0,1,2]
-print(a.firstMissingPositive4(nums))
+nums=[-1,4,1,4,9,10]
+print(a.firstMissingPositive(nums))
