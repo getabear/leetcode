@@ -1,6 +1,6 @@
 from typing import List
 
-class Solution:
+class Solution2:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
         #这次有障碍物,咱们还是先用自顶向下的动态规划,通过了的
         #太多细节,有点难以处理,不推荐...
@@ -72,6 +72,28 @@ class Solution1:
             j=n-1
             i-=1
         return dp[0][0]
+
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        h=len(obstacleGrid)
+        w=len(obstacleGrid[0])
+        # dp数组含义，从dp[0][0]到dp[i][j]的路径数量
+        dp=[[0 for i in range(w)] for j in range(h)]
+        # 初始化情况
+        # 1.如果开始处是障碍物，则直接返回
+        if obstacleGrid[0][0]==1:
+            return 0
+        for i in range(h):
+            for j in range(w):
+                if not obstacleGrid[i][j]:
+                    if not (i or j):
+                        dp[i][j]=1
+                    else:
+                        x=dp[i-1][j] if i!=0 else 0
+                        y=dp[i][j-1] if j!=0 else 0
+                        dp[i][j]=x+y
+        return dp[-1][-1]
+
 
 
 
